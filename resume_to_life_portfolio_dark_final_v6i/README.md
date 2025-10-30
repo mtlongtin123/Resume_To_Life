@@ -1,4 +1,4 @@
-# Marshall Longtin — Resume-to-Life Portfolio
+# Marshall Longtin Resume-to-Life Portfolio
 
 Welcome to my personal portfolio website, built to bring my resume to life through clean design, storytelling, and interactivity.
 
@@ -8,7 +8,7 @@ This project highlights my work in **data science, economics, and machine learni
 
 ## Live Website
 [marshalllongtin.github.io/portfolio](https://marshalllongtin.github.io/portfolio)  
-(If you’re viewing this on GitHub, click the link above to see the live site.)
+(If you√ïre viewing this on GitHub, click the link above to see the live site.)
 
 ---
 
@@ -32,16 +32,16 @@ It includes:
 ---
 
 ## Sections
-- **About** — Background, interests, and academic focus  
-- **Experience** — Interactive timeline of research, work, and leadership  
-- **Projects** — Live GitHub repository feed  
-- **Athletics** — Gallery of sports and achievements  
-- **Contact** — Direct form submission and LinkedIn links  
+- **About** √ë Background, interests, and academic focus  
+- **Experience** √ë Interactive timeline of research, work, and leadership  
+- **Projects** √ë Live GitHub repository feed  
+- **Athletics** √ë Gallery of sports and achievements  
+- **Contact** √ë Direct form submission and LinkedIn links  
 
 ---
 
 ## Deployment (GitHub Pages)
-If you’d like to fork or adapt this site for your own portfolio:
+If you√ïd like to fork or adapt this site for your own portfolio:
 
 1. Clone the repository:
    ```bash
