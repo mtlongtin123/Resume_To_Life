@@ -8,7 +8,7 @@ This project highlights my work in **data science, economics, and machine learni
 
 ## Live Website
 [marshalllongtin.github.io/portfolio](https://marshalllongtin.github.io/portfolio)  
-(If youÕre viewing this on GitHub, click the link above to see the live site.)
+(If you're viewing this on GitHub, click the link above to see the live site.)
 
 ---
 
