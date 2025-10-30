@@ -32,16 +32,16 @@ It includes:
 ---
 
 ## Sections
-- **About** Ñ Background, interests, and academic focus  
-- **Experience** Ñ Interactive timeline of research, work, and leadership  
-- **Projects** Ñ Live GitHub repository feed  
-- **Athletics** Ñ Gallery of sports and achievements  
-- **Contact** Ñ Direct form submission and LinkedIn links  
+- **About** Background, interests, and academic focus  
+- **Experience** Interactive timeline of research, work, and leadership  
+- **Projects** Live GitHub repository feed  
+- **Athletics** Gallery of sports and achievements  
+- **Contact** Direct form submission and LinkedIn links  
 
 ---
 
 ## Deployment (GitHub Pages)
-If youÕd like to fork or adapt this site for your own portfolio:
+If you'd like to fork or adapt this site for your own portfolio:
 
 1. Clone the repository:
    ```bash
