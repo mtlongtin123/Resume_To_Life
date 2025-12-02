@@ -1,6 +1,6 @@
 # Marshall Longtin Resume-to-Life Portfolio
 
-Welcome to my personal portfolio website, built to bring my resume to life through clean design, storytelling, and interactivity.
+Welcome to my personal portfolio website, built not only for my Human Factors class but to bring my resume to life through clean design, storytelling, and interactivity.
 
 This project highlights my work in **data science, economics, and machine learning**, as well as my experiences across research, analytics, athletics, and entrepreneurship.
 
@@ -47,4 +47,5 @@ If you'd like to fork or adapt this site for your own portfolio:
    ```bash
    git clone https://github.com/mtlongtin123/portfolio.git
    cd portfolio
+
 
