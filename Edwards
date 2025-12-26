@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Marshall T Longtin - Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<meta name="theme-color" content="#0b0c10"/>
+<meta name="description" content="Marshall T Longtin — Data Science and Economics at Chapman University. Projects, experience, and work in analytics, modeling, and visualization."/>
+<meta property="og:title" content="Marshall T Longtin — Portfolio"/>
+<meta property="og:description" content="Projects, experience, and work in data science and economics."/>
+<meta property="og:image" content="assets/headshot_suit.png"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+  :root { --bg:#0b0c10; --card:#111317; --line:#1f232b; --txt:#e8edf2; --accent:#7cb0ff; --muted:#9aa7b7; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;scroll-behavior:smooth;line-height:1.6}
+  a{color:var(--accent);text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:24px}
+
+  /* Nav */
+  nav{position:sticky;top:0;background:#0b0c10e6;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:14px 20px}
+  .nav-title{font-weight:800;font-size:20px}
+  .nav-links{display:flex;gap:14px;flex-wrap:wrap}
+  .link{padding:8px 12px;border:1px solid #253043;border-radius:999px;color:var(--txt);transition:all .3s}
+  .link:hover{background:var(--accent);color:#071427}
+
+  /* Sections & type */
+  section{margin:60px 0;padding-top:20px;opacity:0;transform:translateY(20px);transition:all .8s ease-out}
+  section.visible{opacity:1;transform:translateY(0)}
+  h1,h2,h3{font-weight:700;margin-bottom:14px}
+  h1{font-size:42px} h2{font-size:28px} h3{font-size:22px}
+  p{margin-bottom:16px;color:var(--muted)}
+
+  /* Buttons */
+  .button-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 4px}
+  .btn{background:var(--accent);color:#071427;padding:10px 16px;border-radius:10px;font-weight:700;display:inline-block;transition:transform .2s}
+  .btn:hover{transform:translateY(-1px);opacity:.92}
+  .btn--dark{background:#1a2230;color:#e8edf2;border:1px solid #293447}
+
+
+  .grid{display:grid;gap:16px}
+  .cols-2{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+
+  
+  .hero{display:flex;flex-direction:column;align-items:center;text-align:center;margin-top:60px}
+  .headshot{width:180px;height:180px;border-radius:50%;border:2px solid var(--accent);margin-bottom:20px;background-image:url('assets/headshot_suit.png');background-size:cover;background-position:50% 28%;}
+  .headshot:hover{filter:brightness(1.05)}
+
+  /* Projects grid */
+  .projgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+  .proj{background:#0f1218;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .3s}
+  .proj:hover{transform:translateY(-4px)}
+  .proj h3{margin:0 0 8px 0}
+  .proj .desc{color:#cfe0ff;font-size:14px;margin-bottom:8px}
+  .proj .meta{color:#9aa7b7;font-size:12px;margin-top:auto}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .gallery img{width:100%;border-radius:12px;border:1px solid var(--line);object-fit:cover;aspect-ratio:4/3}
+  .caption{font-size:13px;color:#b9c6d6;margin-top:6px}
+  .badge{display:inline-block;background:#162033;border:1px solid #243147;color:#cfe0ff;padding:4px 8px;border-radius:8px;font-size:12px;margin-right:6px;margin-bottom:6px}
+
+  /* Footer */
+  footer{text-align:center;padding:40px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+  /* EXPERIENCE TIMELINE */
+  .xp { margin-top: 8px; }
+  .xp-controls { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .xp-chip { padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:var(--txt); cursor:pointer; }
+  .xp-chip.active, .xp-chip:hover { background:var(--accent); color:#071427; }
+  .xp-tl { position:relative; margin-left:8px; }
+  .xp-tl::before { content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(#223, #2a3342); }
+  .xp-item { position:relative; padding-left:42px; margin:16px 0; }
+  .xp-dot { position:absolute; left:6px; top:18px; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(124,176,255,.15); }
+  .xp-card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; transition:transform .2s, border-color .2s; }
+  .xp-card:hover { transform:translateY(-2px); border-color:#2b3750; }
+  .xp-header { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+  .xp-role { font-weight:700; font-size:18px; }
+  .xp-company { color:#cfe0ff; }
+  .xp-meta { color:var(--muted); font-size:13px; margin-top:2px; }
+  .xp-teaser { color:#cfe0ff; margin:10px 0 8px; max-width:70ch; }
+  .xp-badges { display:flex; flex-wrap:wrap; gap:8px; }
+  .xp-badge { background:#162033; border:1px solid #243147; color:#cfe0ff; padding:4px 8px; border-radius:8px; font-size:12px; }
+  .xp-actions { margin-top:10px; }
+  .xp-toggle { background:transparent; border:1px solid var(--line); color:var(--accent); padding:6px 10px; border-radius:8px; cursor:pointer; }
+  .xp-details { display:none; margin-top:8px; color:#b9c6d6; }
+  .xp-details ul { padding-left:18px; }
+
+  /* Print cleanup */
+  @media print {
+    nav, .projgrid, #projects, #athletics, #achievements, footer { display:none !important; }
+    body { background:#fff; color:#000; }
+    a { color:#000; }
+    .card, .container { border:none; box-shadow:none; }
+    #about, #experience { display:block; opacity:1 !important; transform:none !important; margin:0; }
+    .container { max-width:100%; padding:0 12mm; }
+    h1,h2,h3 { color:#000; }
+    #about .card { padding-left:0; padding-right:0; }
+    @page { margin:12mm; }
+  }
+</style>
+</head>
+
+<body>
+  
+  <nav>
+    <div class="nav-inner container">
+      <div class="nav-title">Marshall Longtin</div>
+      <div class="nav-links">
+        <a href="#about" class="link">About</a>
+        <a href="#experience" class="link">Experience</a>
+        <a href="#projects" class="link">Projects</a>
+        <a href="#athletics" class="link">Athletics</a>
+        <a href="#resume-to-life" class="link">Resume-to-Life</a>
+        <a href="#contact" class="link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="headshot" aria-label="Marshall T. Longtin headshot"></div>
+    <h1>Hey, I'm Marshall T. Longtin</h1>
+    <p>Current Junior Double Majoring in Data Science and Economics at Chapman University.</p>
+
+    <div class="button-row" role="group" aria-label="Primary links">
+      <a class="btn btn--dark" href="https://www.linkedin.com/in/marshall-longtin/" target="_blank" class="btn">LinkedIn</a>
+      <a class="btn btn--dark" href="assets/Marshall_Longtin_Resume.pdf" target="_blank">View Resume</a>
+      <a class="btn btn--dark" href="assets/Marshall_Longtin_CoverLetter.pdf" target="_blank">View Cover Letter</a>
+      <a class="btn btn--dark" href="https://github.com/mtlongtin123" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <section id="about" class="container">
+    <p>My goal this summer is to work at Edwards Lifesciences, where I can contribute my background in data science and economics while continuing to develop my skills in a real-world healthcare and business environment.</p>
+    <p>After stepping away from collegiate baseball last year, I redirected the same discipline, consistency, and competitive drive that shaped my athletic career into analytics and problem-solving.</p>
+    <p>Over the past year, I earned a Tech Lead role at ID11, where I guide a team of six building models to forecast soccer players’ market values. I initially gained this responsibility by developing an analytics model that improved on-field decision-making for goal kicks and throw-ins, and by consistently delivering practical results. Alongside this work, I completed part-time data analytics projects for Artifact Puzzles, where I presented findings directly to the CEO and recommended which advertising strategies to prioritize for the holiday season.</p>
+    <p>This spring, I’ll study International Business and Economics in Madrid to further broaden my global perspective. Thank you for the opportunity to apply, and I look forward to connecting in the future.</p>
+
+        <div class="grid cols-2" style="margin-top:10px">
+      <div class="card">
+        <h3>Programming</h3>
+        <p>Python, Matplotlib, Pandas, NumPy, SQL, Java, JavaScript, HTML/CSS, Git</p>
+      </div>
+      <div class="card">
+        <h3>Data Science</h3>
+        <p>Machine Learning, Modeling, Data Visualization, Statistical Analysis</p>
+      </div>
+      <div class="card">
+        <h3>Economics</h3>
+        <p>Econometrics, Forecasting, Game Theory, Market Research, Policy Analysis</p>
+      </div>
+      <div class="card">
+        <h3>Professional</h3>
+        <p>Leadership, Collaboration, Communication, Project Management</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="container">
+    <h2>Experience</h2>
+  
+    <div class="xp-tl" id="xp-list">
+      <!-- ID11 -->
+      <article class="xp-item" data-cat="data leadership">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Data Science Intern <span class="xp-company">ID11</span></div>
+              <div class="xp-meta">Mar 2025 – Present · Orange County · Hybrid</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Tech Lead for a six-person team building models that forecast soccer player market values.</p>
+          <div class="xp-badges">
+            <span class="xp-badge">Python</span><span class="xp-badge">Pandas</span>
+            <span class="xp-badge">Modeling</span><span class="xp-badge">Soccer Analytics</span>
+          </div>
+          <div class="xp-actions"><button class="xp-toggle">Show details</button></div>
+          <div class="xp-details">
+            <ul>
+              <li>Earned Tech Lead after shipping a set-piece model improving goal-kick and throw-in strategy.</li>
+              <li>Own data cleaning, feature engineering, validation, and coach-facing reports.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+  
+      <!-- Gabbi’s -->
+      <article class="xp-item" data-cat="ops">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Host <span class="xp-company">Gabbi’s Mexican Kitchen</span></div>
+              <div class="xp-meta">Aug 2025 – December 2025 · Orange County · On-site</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Manage reservations and flow at a Michelin-recognized restaurant while coordinating front-of-house service.</p>
+          <div class="xp-badges"><span class="xp-badge">Spanish</span><span class="xp-badge">Communication</span><span class="xp-badge">Organization</span></div>
+        </div>
+      </article>
+  
+      <!-- TORQ Sports -->
+      <article class="xp-item" data-cat="data">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Software Engineer <span class="xp-company">TORQ Sports</span></div>
+              <div class="xp-meta">2025 · Remote/Hybrid</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Built pipelines and dashboards for athlete tracking and integrated Python models into reporting.</p>
+          <div class="xp-badges"><span class="xp-badge">APIs</span><span class="xp-badge">Dashboards</span><span class="xp-badge">Web Scraping</span></div>
+        </div>
+      </article>
+  
+      <!-- Walking Aid Research -->
+      <article class="xp-item" data-cat="research data">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Walking Aid Technology Research <span class="xp-company">Chapman</span></div>
+              <div class="xp-meta">Jan 2025 – May 2025 · Hybrid</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Paid research using AI concepts to support mobility for individuals with impaired vision.</p>
+          <div class="xp-badges"><span class="xp-badge">AI</span><span class="xp-badge">Python</span><span class="xp-badge">Data Modeling</span></div>
+        </div>
+      </article>
+  
+      <!-- NDVI Wildfire -->
+      <article class="xp-item" data-cat="research data">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">CA Wildfire Research — NDVI</div>
+              <div class="xp-meta">Jan 2025 – Apr 2025 · Hybrid</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Analyzed soil moisture and NDVI prior to January 2025 wildfires; built visual summaries.</p>
+          <div class="xp-badges"><span class="xp-badge">Python</span><span class="xp-badge">Visualization</span><span class="xp-badge">Research</span></div>
+        </div>
+      </article>
+  
+      <!-- Fenix -->
+      <article class="xp-item" data-cat="ops leadership">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Sales Associate <span class="xp-company">Fenix Consulting Group</span></div>
+              <div class="xp-meta">Mar 2025 – May 2025 · Anaheim</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Supported customer acquisition while practicing structured outreach.</p>
+          <div class="xp-badges"><span class="xp-badge">Sales</span><span class="xp-badge">Communication</span></div>
+        </div>
+      </article>
+  
+      <!-- Entrepreneurship -->
+      <article class="xp-item" data-cat="leadership ops">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Entrepreneur <span class="xp-company">Longtin Pressure Washing</span></div>
+              <div class="xp-meta">Jun 2021 – Aug 2024 · Seattle</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Founded and ran a service business. Managed operations, marketing, and client relationships.</p>
+          <div class="xp-badges"><span class="xp-badge">Business Ops</span><span class="xp-badge">Customer Service</span></div>
+        </div>
+      </article>
+  
+      <!-- Admissions -->
+      <article class="xp-item" data-cat="leadership ops">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Tour Guide / Office <span class="xp-company">Chapman Admissions</span></div>
+              <div class="xp-meta">Jan 2025 – Apr 2025 · On-site</div>
+            </div>
+          </div>
+          <p class="xp-teaser">Led tours for 20+ visitors and answered admissions questions by phone and in person.</p>
+          <div class="xp-badges"><span class="xp-badge">Public Speaking</span><span class="xp-badge">Communication</span></div>
+        </div>
+      </article>
+  
+      <!-- Athletics as experience (optional) -->
+      <article class="xp-item" data-cat="leadership">
+        <div class="xp-dot"></div>
+        <div class="xp-card">
+          <div class="xp-header">
+            <div>
+              <div class="xp-role">Student-Athlete <span class="xp-company">Chapman Baseball</span></div>
+              <div class="xp-meta">Aug 2023 – Oct 2024</div>
+            </div>
+          </div>
+          <p class="xp-teaser">SCIAC All-Academic Team. Balanced rigorous academics with NCAA competition.</p>
+          <div class="xp-badges"><span class="xp-badge">Teamwork</span><span class="xp-badge">Discipline</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <p>These cards load directly from my GitHub and update automatically.</p>
+    <div id="projects-grid" class="projgrid"></div>
+  </section>
+
+  <section id="athletics" class="container">
+    <h2>Athletics and Gallery</h2>
+    <p>Sports shaped my approach to work and everyday life. It taught me patience, gave me structure, and that consistent effort compounds on itself.</p>
+    <div class="gallery">
+      <figure><img src="assets/baseball_action.jpg" alt="College baseball action" loading="lazy"><figcaption class="caption">Competing for Chapman University baseball.</figcaption></figure>
+      <figure><img src="assets/family_trophy.jpg" alt="Family trophy moment" loading="lazy"><figcaption class="caption">After the Metro 3A championship.</figcaption></figure>
+      <figure><img src="assets/championship_jump.jpg" alt="Team celebration" loading="lazy"><figcaption class="caption">First 3A public school baseball state title.</figcaption></figure>
+      <figure><img src="assets/football_family.jpg" alt="Football senior night" loading="lazy"><figcaption class="caption">Senior night with family.</figcaption></figure>
+      <figure><img src="assets/marathon_medal.jpg" alt="Marathon finish" loading="lazy"><figcaption class="caption">Seattle Marathon Series.</figcaption></figure>
+      <figure><img src="assets/newspaper_lincoln_pile.jpeg" alt="Newspaper feature" loading="lazy"><figcaption class="caption">Local sports section feature.</figcaption></figure>
+      <figure><img src="assets/soccer_trophy.jpg" alt="Soccer trophy" loading="lazy"><figcaption class="caption">Middle school soccer championship.</figcaption></figure>
+      <figure><img src="assets/sounders_memory.jpg" alt="Sounders moment" loading="lazy"><figcaption class="caption">Seattle Sounders camp memory.</figcaption></figure>
+      <figure><img src="assets/beach_day.jpg" alt="Beach day" loading="lazy"><figcaption class="caption">Tried surfing. Tough for a Seattle kid.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="resume-to-life" class="container">
+    <h2>Build Your Own Resume to Life Website</h2>
+    <div class="card">
+      <p>A traditional resume can only say so much. A Resume to Life site tells your story through visuals, experiences, and data. I help students and early professionals build personal portfolios that showcase growth and individuality. But to also help differentiate yourself in this job market.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact</h2>
+    <p>If you want to collaborate or build your own site, I would love to connect.</p>
+  
+    <div class="card" style="max-width:720px;padding:20px">
+      <p>You can reach me directly here via email:</p>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="mailto:marshalltlongtin@icloud.com" target="_blank" class="btn">Email Me</a>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>© 2025 Marshall T. Longtin — Resume to Life Project</footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); } });
+    },{threshold:0.2});
+    document.querySelectorAll('section').forEach((s)=>observer.observe(s));
+
+    // GitHub live feed
+    async function fetchRepos(){
+      try{
+        const r = await fetch('https://api.github.com/users/mtlongtin123/repos?sort=updated');
+        const data = await r.json();
+        const grid = document.getElementById('projects-grid');
+        data.slice(0,8).forEach((repo)=>{
+          const card = document.createElement('div'); 
+          card.className='proj';
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <div class="desc">${repo.description || "No description available."}</div>
+            <div class="meta">Updated: ${new Date(repo.updated_at).toLocaleDateString()} • ★ ${repo.stargazers_count}</div>
+            <a href="${repo.html_url}" target="_blank" class="btn btn--dark" style="margin-top:10px">Open Repo</a>
+          `;
+          grid.appendChild(card);
+        });
+      }catch(e){ console.error(e); }
+    }
+    fetchRepos();
+  </script>
+
+  <script defer data-domain="example.com" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>
